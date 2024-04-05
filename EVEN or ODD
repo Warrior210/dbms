@@ -1,0 +1,19 @@
+--even or odd
+set serveroutput on;
+
+declare
+num int;
+
+begin
+num:=&num_input;
+
+if mod(num,2)=0 then
+dbms_output.put_line('even');
+
+else
+dbms_output.put_line('odd');
+
+endif;
+
+end;
+/
