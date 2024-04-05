@@ -1,0 +1,23 @@
+-- Insertion
+INSERT INTO employees (employee_id, employee_name, department_id, salary) VALUES (102, 'Mark Johnson', 20, 60000.00);
+
+-- Retrieval
+SELECT * FROM employees;
+
+-- Updating
+UPDATE employees SET salary = 65000.00 WHERE employee_id = 102;
+
+-- Deletion
+DELETE FROM employees WHERE employee_id = 102;
+
+-- Equi Join
+SELECT e.employee_id, e.employee_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;
+
+-- Non-equi Join
+SELECT e1.employee_id, e1.employee_name, e2.employee_name AS manager_name FROM employees e1 JOIN employees e2 ON e1.manager_id = e2.employee_id;
+
+-- Outer Join
+SELECT e.employee_id, e.employee_name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.department_id;
+
+-- Self Join
+SELECT e.employee_name, m.employee_name AS manager_name FROM employees e JOIN employees m ON e.manager_id = m.employee_id;
