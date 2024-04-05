@@ -1,0 +1,13 @@
+SELECT COUNT(*) AS total_customers FROM customers;
+
+SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id;
+
+CREATE TABLE customers (customer_id INT PRIMARY KEY, customer_name VARCHAR(50) NOT NULL, email VARCHAR(100) UNIQUE, phone VARCHAR(20), address VARCHAR(255));
+CREATE TABLE employees (employee_id INT PRIMARY KEY, employee_name VARCHAR(50) NOT NULL, department_id INT, salary DECIMAL(10, 2), CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(department_id));
+CREATE TABLE departments (department_id INT PRIMARY KEY, department_name VARCHAR(50) NOT NULL);
+
+INSERT INTO customers (customer_id, customer_name, email, phone, address) VALUES (1, 'John Doe', 'john@example.com', '1234567890', '123 Main St');
+
+INSERT INTO employees (employee_id, employee_name, department_id, salary) VALUES (101, 'Jane Smith', 10, 50000.00);
+
+DELETE FROM departments WHERE department_id = 10;
