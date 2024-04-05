@@ -1,0 +1,19 @@
+DECLARE
+    v_customer_name customers.customer_name%TYPE;
+    v_customer_address customers.customer_address%TYPE;
+BEGIN
+    SELECT customer_name, customer_address
+    INTO v_customer_name, v_customer_address
+    FROM customers
+    WHERE customer_id = &customer_id;
+    
+    DBMS_OUTPUT.PUT_LINE('Customer Name: ' || v_customer_name);
+    DBMS_OUTPUT.PUT_LINE('Customer Address: ' || v_customer_address);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Error: "no data found".');
+        
+    WHEN VALUE_ERROR OR OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: "Invalid-ID".');
+END;
+/
