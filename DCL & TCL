@@ -1,0 +1,39 @@
+--dcl
+create table employees(
+	emp_id int primary key;
+	emp_name varchar(2),
+	emp_salary int
+);
+
+insert into(emp_id,emp_name,emp_salary) values(1,'john',2000);
+insert into(emp_id,emp_name,emp_salary) values(2,'ravi',3000);
+insert into(emp_id,emp_name,emp_salary) values(3,'vishnu',4000);
+insert into(emp_id,emp_name,emp_salary) values(4,'tiru',5000);
+
+grant select on employees to user_name;
+revoke select on employees from user_name;
+
+
+--tcl
+
+create table employees(
+	emp_id int primary key;
+	emp_name varchar(2),
+	emp_salary int
+);
+
+insert into(emp_id,emp_name,emp_salary) values(1,'john',2000);
+insert into(emp_id,emp_name,emp_salary) values(2,'ravi',3000);
+insert into(emp_id,emp_name,emp_salary) values(3,'vishnu',4000);
+insert into(emp_id,emp_name,emp_salary) values(4,'tiru',5000);
+select * from employees;
+
+delete from employees where salary=2000;
+commit;
+select * from employees;
+
+delete from employees where salary=5000;
+commit;
+select * from employees;
+
+rollback;
