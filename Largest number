@@ -1,0 +1,28 @@
+set serveroutput on;
+
+declare
+num1 int;
+num2 int;
+num3 int;
+result int ;
+
+begin
+
+num1:=&num1_input;
+num1:=&num1_input;
+num1:=&num1_input;
+
+if num1>=num2 AND num1>=num3 then
+result:= num1;
+
+elsif num2>=num1 AND num2>=num3 then
+result:= num2;
+
+else
+result:=num3;
+
+endif;
+
+dbms_output.put_line('largest number='||result);
+end;
+/
