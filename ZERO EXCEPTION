@@ -1,0 +1,20 @@
+--divide by zero exception
+
+set serveroutput on;
+
+declare
+num1 int :=2;
+num2 int :=0;
+result int;
+
+begin
+
+begin
+result:=num1/num2;
+dbms_output.put_line('result'||result);
+exception
+when zero_divide then
+dbms_output.put_line('divide by zero exception');
+end;
+end;
+/
