@@ -1,0 +1,50 @@
+set serveroutput on;
+
+create table employees(
+	emp_id int primary key,
+	emp_name varchar(2),
+	emp_salary int
+)
+
+insert into(emp_id,emp_name,emp_salary) values(1,'john',1000);
+insert into(emp_id,emp_name,emp_salary) values(2,'ravi',2000);
+insert into(emp_id,emp_name,emp_salary) values(3,'david',3000);
+insert into(emp_id,emp_name,emp_salary) values(4,'surya',4000);
+
+select * from emplyoees;
+
+declare
+ cursor emp_cursor is
+ select emp_id,emp_salary
+ from employees
+ for update;
+ 
+ updated_records int:=0;
+ 
+begin
+
+for emp_record in emp_cursor loop
+if emp_record.emp_salary<1000 then
+update employees
+set emp_salary:=1500
+where current of emp_cursor;
+updated_records:updated_records+1;
+
+elsif emp_record.emp_salary>=1000 AND emp_record.emp_salary then
+update employees
+set emp_salary:=2500
+where current of emp_cursor;
+updated_records:updated_records+1;
+
+elsif emp_record.emp_salary>=2000 AND if emp_record.emp_salary<=3000 then
+update employees
+set emp_salary:=4000
+where current of emp_cursor;
+updated_records:updated_records+1; 
+
+endif;
+end loop;
+dbms_output.put_line('result=:'|| updated_records);
+end;
+/
+select * from employees;
