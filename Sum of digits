@@ -1,0 +1,24 @@
+--sum of digits
+
+set serveroutpt on;
+
+declare
+num int;
+temp int;
+digit int;
+sum=0;
+
+begin
+
+num:=&num_int;
+temp:=num;
+while temp>0 loop
+digit:=mod(num,10);
+sum:=sum+digit;
+temp:=trunc(num/10);
+end loop;
+
+dbms_output.put_line('result='||sum);
+
+end;
+/
