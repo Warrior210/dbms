@@ -1,0 +1,24 @@
+--reverse number
+
+set serveroutpt on;
+
+declare
+num int;
+temp int;
+digit int;
+rev=0;
+
+begin
+
+num:=&num_int;
+temp:=num;
+while temp>0 loop
+digit:=mod(num,10);
+rev:=rev*10+digit;
+temp:=trunc(num/10);
+end loop;
+
+dbms_output.put_line("result="||rev);
+
+end;
+/
