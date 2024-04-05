@@ -1,0 +1,26 @@
+--factorial of a given number
+create table factorial_table(
+		input_number int,
+		factorial_result int
+);
+
+set serveroutput on;
+declare
+num int;
+factorial_result int :=1;
+
+begin
+num:=&num_input;
+
+for i in 1..num loop
+factorial_result=factorial_result*i;
+end loop;
+
+insert into(input_number,factorial_result) 
+values(num,factorial_result);
+
+dbms_output.put_line('factorial='||factorial_result);
+commit;
+
+end;
+/
